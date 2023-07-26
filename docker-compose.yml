@@ -1,0 +1,13 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"  # Mapeo del puerto 8081 del contenedor al puerto 8081 del host
+    volumes:
+      - ./AppContinentalV3-master:/app  # Monta el directorio del proyecto React Native en el directorio /app del contenedor
+    working_dir: /app  # Establece el directorio de trabajo dentro del contenedor
+    environment:
+      - CHOKIDAR_USEPOLLING=true  # Para habilitar la detección de cambios en archivos en sistemas operativos Linux y macOS
